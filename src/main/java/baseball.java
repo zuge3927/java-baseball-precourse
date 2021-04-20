@@ -5,6 +5,7 @@ public class baseball {
         baseballFunction bbf = new baseballFunction();
         	while(bbf.runGame()) {
         		String randomNumber = bbf.createNumber();
+        		String userNumber = bbf.insertNumber();
         	}
         }
         
@@ -41,4 +42,15 @@ class baseballFunction{
         }
         return randomNumber;
     }
+    
+ // 사용자 입력값 받는 메서드
+    public String insertNumber() {
+    	Scanner sc = new Scanner(System.in);
+    	System.out.println("숫자를 입력해 주세요 :");
+    	String userNumber = sc.next();
+    	
+		return userNumber;
+    }
+    
+    
 }

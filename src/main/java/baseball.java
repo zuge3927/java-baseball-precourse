@@ -3,9 +3,19 @@ import java.util.Scanner;
 public class baseball {
     public static void main(String[] args) {
         baseballFunction bbf = new baseballFunction();
+        boolean isAllStrike = false;
+        
         	while(bbf.runGame()) {
         		String randomNumber = bbf.createNumber();
         		String userNumber = bbf.insertNumber();
+        		
+        		isAllStrike = bbf.isAllStrike(randomNumber, userNumber);
+            	
+            	while(!isAllStrike) {
+            		userNumber = bbf.insertNumber();
+            		isAllStrike = bbf.isAllStrike(randomNumber, userNumber);
+            	}
+            	System.out.println("3개의 숫자를 모드 맞히셨습니다! 게임 종료");
         	}
         }
         
@@ -50,6 +60,41 @@ class baseballFunction{
     	String userNumber = sc.next();
     	
 		return userNumber;
+    }
+    
+ // 볼, 스트라이크 판별 메서드
+    public boolean isAllStrike(String randomNumber, String userNumber) {
+    	boolean isAllStrike = false;
+    	int strike = 0;
+    	int ball = 0;
+    	
+    	String randomArr[] = randomNumber.split("");
+    	String userArr[] = userNumber.split("");
+    	
+    	for(int i = 0; i < randomArr.length; i++) {
+    		for(int j = 0; j < userArr.length; j++) {
+    			if(randomArr[i].equals(userArr[j]) && i == j) {
+    				strike++;
+    			}else if(randomArr[i].equals(userArr[j]) && i != j) {
+    				ball++;
+    			}
+    		}
+    	}
+    	
+    	if(strike == 3) {
+    		System.out.println("3스트라이크");
+    		isAllStrike = true;
+    	}else if(ball == 0 && strike == 0) {
+    		System.out.println("포볼");
+    	}else if(ball == 0) {
+    		System.out.println(strike + "스트라이크");
+    	}else if(strike == 0) {
+    		System.out.println(ball + "볼");
+    	}else if(ball != 0 && strike != 0) {
+    		System.out.println(ball + "볼 " + strike + "스트라이크");
+    	}
+    	
+    	return isAllStrike;
     }
     
     

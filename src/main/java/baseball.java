@@ -4,7 +4,7 @@ public class baseball {
     public static void main(String[] args) {
         baseballFunction bbf = new baseballFunction();
         	while(bbf.runGame()) {
-        		
+        		String randomNumber = bbf.createNumber();
         	}
         }
         
@@ -26,5 +26,19 @@ class baseballFunction{
         	System.out.println("입력값이 올바르지 않습니다.");
         }
         return false;
+    }
+    
+ // 난수 발생 메서드
+    public String createNumber(){
+        String randomNumber = "";
+        for(int i = 0; i < 3; i++){
+            String number = Integer.toString((int) (Math.random() * 10));
+            if(!number.equals("0") && !randomNumber.contains(number)){
+                randomNumber += number;
+            } else{
+                i -= 1;
+            }
+        }
+        return randomNumber;
     }
 }

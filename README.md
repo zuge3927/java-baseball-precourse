@@ -5,3 +5,9 @@
 
 ## 과제 제출 과정
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/precourse)
+* 
+## 구현할 기능 목록
+* 야구게임 시작 및 종료 기능
+* 중복하지 않는 3자리의 난수 발생 기능
+* 사용자가 입력한 값 받는 기능
+* 볼, 스트라이크 판별 
